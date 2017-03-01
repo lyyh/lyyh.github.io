@@ -1,0 +1,805 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="javascript秘密花园," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/images/qqf.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="最近看了Javascript秘密花园，把重点的知识再总结了一遍">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript秘密花园">
+<meta property="og:url" content="http://blog.liuyanhao.cn/2017/02/25/js秘密花园/index.html">
+<meta property="og:site_name" content="多情剑客无情剑">
+<meta property="og:description" content="最近看了Javascript秘密花园，把重点的知识再总结了一遍">
+<meta property="og:updated_time" content="2017-02-25T14:55:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript秘密花园">
+<meta name="twitter:description" content="最近看了Javascript秘密花园，把重点的知识再总结了一遍">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6294502511155873000,
+      author: '青锋'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://blog.liuyanhao.cn/2017/02/25/js秘密花园/"/>
+
+  <title> javascript秘密花园 | 多情剑客无情剑 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?fd4bd4ac402cb334203e010077c9e4c8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">多情剑客无情剑</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">心中曾住着一位游侠</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-qfz">
+          <a href="/blog/qfz" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fire"></i> <br />
+            
+            青锋志
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                javascript秘密花园
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-02-25T22:50:34+08:00" content="2017-02-25">
+              2017-02-25
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/javascript/" itemprop="url" rel="index">
+                    <span itemprop="name">javascript</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2017/02/25/js秘密花园/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/02/25/js秘密花园/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近看了Javascript秘密花园，把重点的知识再总结了一遍<br><a id="more"></a></p>
+<h3 id="对象使用和属性"><a href="#对象使用和属性" class="headerlink" title="对象使用和属性"></a>对象使用和属性</h3><p>JavaScript 中所有变量都可以当作对象使用，除了两个例外 null 和 undefined。<br>对于数字字面量不能当做对象使用。这是因为 JavaScript 解析器的一个错误， 它试图将点操作符解析为浮点数字面值的一部分。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2.toString(); // 出错：SyntaxError</span><br></pre></td></tr></table></figure></p>
+<p>有很多变通方法可以让数字的字面值看起来像对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">2..toString(); // 第二个点号可以正常解析</span><br><span class="line">2 .toString(); // 注意点号前面的空格</span><br><span class="line">(2).toString(); // 2先被计算</span><br></pre></td></tr></table></figure></p>
+<h3 id="对象作为数据类型"><a href="#对象作为数据类型" class="headerlink" title="对象作为数据类型"></a>对象作为数据类型</h3><p>javascript的对象相当于’无序键值对集合’，主要用来保存命名的键与值的对应关系。<br>删除属性的唯一方法是使用 delete 操作符；设置属性为 undefined 或者 null 并不能真正的删除属性， 而仅仅是移除了属性和值的关联。  </p>
+<h3 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h3><p>原型查找：<br>当查找一个对象的属性时，JavaScript 会向上遍历原型链，直到找到给定名称的属性为止。<br>到查找到达原型链的顶部 - 也就是 Object.prototype - 但是仍然没有找到指定的属性，就会返回 undefined。  </p>
+<p>当原型属性用来创建原型链时，可以把任何类型的值赋给它（prototype）。 然而将原子类型赋给 prototype 的操作将会被忽略。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">function Foo() &#123;&#125;</span><br><span class="line">Foo.prototype = 1; // 无效</span><br></pre></td></tr></table></figure></p>
+<h3 id="hasOwnProperty函数"><a href="#hasOwnProperty函数" class="headerlink" title="hasOwnProperty函数"></a>hasOwnProperty函数</h3><p>为了判断一个对象是否包含自定义属性而不是原型链上的属性， 我们需要使用继承自 Object.prototype 的 hasOwnProperty 方法。  </p>
+<p>hasOwnProperty 是 JavaScript 中唯一一个处理属性但是不查找原型链的函数。    </p>
+<p>当检查对象上某个属性是否存在时，hasOwnProperty 是唯一可用的方法。 同时在使用 for in loop 遍历对象时，推荐总是使用 hasOwnProperty 方法， 这将会避免原型对象扩展带来的干扰。  </p>
+<h3 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h3><p>当使用 for in 循环遍历对象的属性时，原型链上的所有属性都将被访问。<br>通过 Object.prototype 原型上的 hasOwnProperty 函数来过滤非自身的属性  </p>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><p>函数声明<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>函数赋值表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var foo = function() &#123;&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>对于var定义的变量，对变量 foo 的解析是在代码运行之前，因此 foo 变量在代码运行时已经被定义过了。<br>命名函数的赋值表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var foo = function bar() &#123;</span><br><span class="line">    bar(); // 正常运行</span><br><span class="line">&#125;</span><br><span class="line">bar(); // 出错：ReferenceError</span><br></pre></td></tr></table></figure></p>
+<p>bar 函数声明外是不可见的，这是因为我们已经把函数赋值给了 foo； 然而在 bar 内部依然可见。这是由于 JavaScript 的 命名处理 所致， 函数名在函数内总是可见的。</p>
+<h3 id="this的工作原理"><a href="#this的工作原理" class="headerlink" title="this的工作原理"></a>this的工作原理</h3><p>当使用 Function.prototype 上的 call 或者 apply 方法时，函数内的 this 将会被 显式设置为函数调用的第一个参数。  </p>
+<h3 id="闭包和引用"><a href="#闭包和引用" class="headerlink" title="闭包和引用"></a>闭包和引用</h3><p>闭包是 JavaScript 一个非常重要的特性，这意味着当前作用域总是能够访问外部作用域中的变量。 因为 函数 是 JavaScript 中唯一拥有自身作用域的结构，因此闭包的创建依赖于函数。  </p>
+<p>为什么不可以在外部访问私有变量？<br>因为 JavaScript 中不可以对作用域进行引用或赋值，因此没有办法在外部访问 count 变量。 唯一的途径就是通过那两个闭包。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var foo = new Counter(4);</span><br><span class="line">foo.hack = function() &#123;</span><br><span class="line">    count = 1337;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>上面的代码不会改变定义在 Counter 作用域中的 count 变量的值，因为 foo.hack 没有 定义在那个作用域内。它将会创建或者覆盖全局变量 count。  </p>
+<h3 id="循环中的闭包"><a href="#循环中的闭包" class="headerlink" title="循环中的闭包"></a>循环中的闭包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for(var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">    setTimeout(function() &#123;</span><br><span class="line">        console.log(i);  </span><br><span class="line">    &#125;, 1000);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为了得到想要的结果，需要在每次循环中创建变量 i 的拷贝。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">    (function(e) &#123;</span><br><span class="line">        setTimeout(function() &#123;</span><br><span class="line">            console.log(e);  </span><br><span class="line">        &#125;, 1000);</span><br><span class="line">    &#125;)(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>外部的匿名函数会立即执行，并把 i 作为它的参数，此时函数内 e 变量就拥有了 i 的一个拷贝。当传递给 setTimeout 的匿名函数执行时，它就拥有了对 e 的引用，而这个值是不会被循环改变的。<br>有另一个方法完成同样的工作，那就是从匿名包装器中返回一个函数。这和上面的代码效果一样。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(var i = 0; i &lt; 10; i++) &#123;</span><br><span class="line">    setTimeout((function(e) &#123;</span><br><span class="line">        return function() &#123;</span><br><span class="line">            console.log(e);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)(i), 1000)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="arguments对象"><a href="#arguments对象" class="headerlink" title="arguments对象"></a>arguments对象</h3><p>JavaScript 中每个函数内都能访问一个特别变量 arguments。这个变量维护着所有传递到这个函数中的参数列表。  </p>
+<p>转化数组:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.slice.call(arguments);</span><br></pre></td></tr></table></figure></p>
+<p>这个转化比较慢，在性能不好的代码中不推荐这种做法。  </p>
+<p>自动更新：<br>arguments 对象为其内部属性以及函数形式参数创建 getter 和 setter 方法。因此，改变形参的值会影响到 arguments 对象的值，反之亦然。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">function foo(a, b, c) &#123;</span><br><span class="line">    arguments[0] = 2;</span><br><span class="line">    a; // 2                                                           </span><br><span class="line"></span><br><span class="line">    b = 4;</span><br><span class="line">    arguments[1]; // 4</span><br><span class="line"></span><br><span class="line">    var d = c;</span><br><span class="line">    d = 9;</span><br><span class="line">    c; // 3</span><br><span class="line">&#125;</span><br><span class="line">foo(1, 2, 3);</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">// 阐述在 ES5 的严格模式下 `arguments` 的特性</span><br><span class="line">function f(a) &#123;</span><br><span class="line">  &quot;use strict&quot;;</span><br><span class="line">  a = 42;</span><br><span class="line">  return [a, arguments[0]];</span><br><span class="line">&#125;</span><br><span class="line">var pair = f(17);</span><br><span class="line">console.assert(pair[0] === 42);</span><br><span class="line">console.assert(pair[1] === 17);</span><br></pre></td></tr></table></figure>
+<p>getters和setters在严格模式下不会被创建  </p>
+<h3 id="构造函数"><a href="#构造函数" class="headerlink" title="构造函数"></a>构造函数</h3><p>在构造函数内部 - 也就是被调用的函数内 - this 指向新创建的对象 Object。 这个新创建的对象的 prototype 被指向到构造函数的 prototype。  </p>
+<p>显式的 return 表达式将会影响返回结果，但仅限于返回的是一个对象。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function Foo()&#123;return 1&#125;</span><br><span class="line">var a = new Foo():</span><br><span class="line">a // &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">function Foo() &#123;</span><br><span class="line">    var obj = &#123;&#125;;</span><br><span class="line">    obj.value = &apos;blub&apos;;</span><br><span class="line"></span><br><span class="line">    var private = 2;</span><br><span class="line">    obj.someMethod = function(value) &#123;</span><br><span class="line">        this.value = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    obj.getPrivate = function() &#123;</span><br><span class="line">        return private;</span><br><span class="line">    &#125;</span><br><span class="line">    return obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>缺点:<br>1.会占用更多的内存，因为新创建的对象不能共享原型上的方法。<br>2.为了实现继承，工厂方法需要从另外一个对象拷贝所有属性，或者把一个对象作为新创建对象的原型。<br>3.放弃原型链仅仅是因为防止遗漏 new 带来的问题，这似乎和语言本身的思想相违背。   </p>
+<h3 id="作用域与命名空间"><a href="#作用域与命名空间" class="headerlink" title="作用域与命名空间"></a>作用域与命名空间</h3><p>如果 return 对象的左括号和 return 不在一行上就会出错。因为自动插入分号的原因<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 译者注：下面输出 undefined</span><br><span class="line">function add(a, b) &#123;</span><br><span class="line">    return </span><br><span class="line">        a + b;</span><br><span class="line">&#125;</span><br><span class="line">console.log(add(1, 2));</span><br></pre></td></tr></table></figure></p>
+<p>每次引用一个变量，JavaScript 会向上遍历整个作用域直到找到这个变量为止。 如果到达全局作用域但是这个变量仍未找到，则会抛出 ReferenceError 异常。  </p>
+<h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><p>JavaScript 中局部变量只可能通过两种方式声明，一个是作为函数参数，另一个是通过 var 关键字声明。  </p>
+<h3 id="变量声明提升-hoisting"><a href="#变量声明提升-hoisting" class="headerlink" title="变量声明提升(hoisting)"></a>变量声明提升(hoisting)</h3><p>JavaScript 会提升变量声明。这意味着 var 表达式和 function声明都将会被提升到当前作用域的顶部。   </p>
+<h3 id="名称解析顺序"><a href="#名称解析顺序" class="headerlink" title="名称解析顺序"></a>名称解析顺序</h3><p>JavaScript 中的所有作用域，包括全局作用域，都有一个特别的名称 this 指向当前对象。函数作用域内也有默认的变量 arguments，其中包含了传递到函数中的参数。  </p>
+<p>比如，当访问函数内的 foo 变量时，JavaScript 会按照下面顺序查找：<br>1.当前作用域内是否有 var foo 的定义。<br>2.函数形式参数是否有使用 foo 名称的。<br>3.函数自身是否叫做 foo。<br>4.回溯到上一级作用域，然后从 #1 重新开始。  </p>
+<h3 id="命名空间"><a href="#命名空间" class="headerlink" title="命名空间"></a>命名空间</h3><p>只有一个全局作用域导致的常见错误是命名冲突。在 JavaScript中，这可以通过 匿名包装器 轻松解决。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">(function() &#123;</span><br><span class="line">    // 函数创建一个命名空间</span><br><span class="line"></span><br><span class="line">    window.foo = function() &#123;</span><br><span class="line">        // 对外公开的函数，创建了闭包</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&#125;)(); // 立即执行此匿名函数</span><br></pre></td></tr></table></figure>
+<p>匿名函数被认为是 表达式；因此为了可调用性，它们首先会被执行。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 另外两种方式</span><br><span class="line">+function()&#123;&#125;();</span><br><span class="line">(function()&#123;&#125;());</span><br></pre></td></tr></table></figure>
+<h3 id="数组遍历与属性"><a href="#数组遍历与属性" class="headerlink" title="数组遍历与属性"></a>数组遍历与属性</h3><p>由于 for in 循环会枚举原型链上的所有属性，唯一过滤这些属性的方式是使用 hasOwnProperty 函数， 因此会比普通的 for 循环慢上好多倍。  </p>
+<p>length属性:<br>length 属性的 getter 方式会简单的返回数组的长度，而 setter 方式会截断数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var foo = [1, 2, 3, 4, 5, 6];</span><br><span class="line">foo.length = 3;</span><br><span class="line">foo; // [1, 2, 3]</span><br><span class="line"></span><br><span class="line">foo.length = 6;</span><br><span class="line">foo; // [1, 2, 3,undefined,undefined,undefined]</span><br></pre></td></tr></table></figure></p>
+<p>为了更好的性能，推荐使用普通的 for 循环并缓存数组的 length 属性。 使用 for in 遍历数组被认为是不好的代码习惯并倾向于产生错误和导致性能问题。  </p>
+<h3 id="Array构造函数"><a href="#Array构造函数" class="headerlink" title="Array构造函数"></a>Array构造函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[1, 2, 3]; // 结果: [1, 2, 3]</span><br><span class="line">new Array(1, 2, 3); // 结果: [1, 2, 3]</span><br><span class="line"></span><br><span class="line">[3]; // 结果: [3]</span><br><span class="line">new Array(3); // 结果: [] </span><br><span class="line">new Array(&apos;3&apos;) // 结果: [&apos;3&apos;]</span><br><span class="line"></span><br><span class="line">// 译者注：因此下面的代码将会使人很迷惑</span><br><span class="line">new Array(3, 4, 5); // 结果: [3, 4, 5] </span><br><span class="line">new Array(3) // 结果: []，此数组长度为 3</span><br></pre></td></tr></table></figure>
+<p>由于只有一个参数传递到构造函数中（译者注：指的是 new Array(3); 这种调用方式），并且这个参数是数字，构造函数会返回一个 length 属性被设置为此参数的空数组。 需要特别注意的是，此时只有 length 属性被设置，真正的数组并没有生成。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var arr = new Array(3);</span><br><span class="line">arr[1]; // undefined</span><br><span class="line">1 in arr; // false, 数组还没有生成</span><br></pre></td></tr></table></figure>
+<p>这种优先于设置数组长度属性的做法只在少数几种情况下有用，比如需要循环字符串，可以避免 for 循环的麻烦。    </p>
+<p>应该尽量避免使用数组构造函数创建新数组。推荐使用数组的字面语法。它们更加短小和简洁，因此增加了代码的可读性。  </p>
+<h3 id="等于操作符"><a href="#等于操作符" class="headerlink" title="等于操作符"></a>等于操作符</h3><p>等于操作符由两个等号组成：==<br>JavaScript 是弱类型语言，这就意味着，等于操作符会为了比较两个值而进行强制类型转换。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;           ==   &quot;0&quot;           // false</span><br><span class="line">0            ==   &quot;&quot;            // true</span><br><span class="line">0            ==   &quot;0&quot;           // true</span><br><span class="line">false        ==   &quot;false&quot;       // false</span><br><span class="line">false        ==   &quot;0&quot;           // true</span><br><span class="line">false        ==   undefined     // false</span><br><span class="line">false        ==   null          // false</span><br><span class="line">null         ==   undefined     // true</span><br><span class="line">&quot; \t\r\n&quot;    ==   0             // true</span><br></pre></td></tr></table></figure></p>
+<p>此外，强制类型转换也会带来性能消耗，比如一个字符串为了和一个数字进行比较，必须事先被强制转换为数字。  </p>
+<h3 id="严格等于操作符"><a href="#严格等于操作符" class="headerlink" title="严格等于操作符"></a>严格等于操作符</h3><p>不像普通的等于操作符，严格等于操作符不会进行强制类型转换。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&quot;&quot;           ===   &quot;0&quot;           // false</span><br><span class="line">0            ===   &quot;&quot;            // false</span><br><span class="line">0            ===   &quot;0&quot;           // false</span><br><span class="line">false        ===   &quot;false&quot;       // false</span><br><span class="line">false        ===   &quot;0&quot;           // false</span><br><span class="line">false        ===   undefined     // false</span><br><span class="line">false        ===   null          // false</span><br><span class="line">null         ===   undefined     // false</span><br><span class="line">&quot; \t\r\n&quot;    ===   0             // false</span><br></pre></td></tr></table></figure></p>
+<h3 id="比较对象"><a href="#比较对象" class="headerlink" title="比较对象"></a>比较对象</h3><p>虽然 == 和 === 操作符都是等于操作符，但是当其中有一个操作数为对象时，行为就不同了。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#125; === &#123;&#125;;                   // false</span><br><span class="line">new String(&apos;foo&apos;) === &apos;foo&apos;; // false</span><br><span class="line">new Number(10) === 10;       // false</span><br><span class="line">var foo = &#123;&#125;;</span><br><span class="line">foo === foo;                 // true</span><br></pre></td></tr></table></figure></p>
+<p>这里等于操作符比较的不是值是否相等，而是是否属于同一个身份；也就是说，只有对象的同一个实例才被认为是相等的。  </p>
+<p>强烈推荐使用严格等于操作符。如果类型需要转换，应该在比较之前显式的转换， 而不是使用语言本身复杂的强制转换规则。  </p>
+<h3 id="typeof操作符"><a href="#typeof操作符" class="headerlink" title="typeof操作符"></a>typeof操作符</h3><p>JavaScript类型表格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Value               Class      Type</span><br><span class="line">-------------------------------------</span><br><span class="line">&quot;foo&quot;               String     string</span><br><span class="line">new String(&quot;foo&quot;)   String     object</span><br><span class="line">1.2                 Number     number</span><br><span class="line">new Number(1.2)     Number     object</span><br><span class="line">true                Boolean    boolean</span><br><span class="line">new Boolean(true)   Boolean    object</span><br><span class="line">new Date()          Date       object</span><br><span class="line">new Error()         Error      object</span><br><span class="line">[1,2,3]             Array      object</span><br><span class="line">new Array(1, 2, 3)  Array      object</span><br><span class="line">new Function(&quot;&quot;)    Function   function</span><br><span class="line">/abc/g              RegExp     object (function in Nitro/V8)</span><br><span class="line">new RegExp(&quot;meow&quot;)  RegExp     object (function in Nitro/V8)</span><br><span class="line">&#123;&#125;                  Object     object</span><br><span class="line">new Object()        Object     object</span><br></pre></td></tr></table></figure></p>
+<p>Class 一列表示对象的内部属性 [[Class]] 的值。为了获取对象的 [[Class]]，我们需要使用定义在 Object.prototype 上的方法 toString。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString.call(new Array(1,2,3)) //[object Array]</span><br></pre></td></tr></table></figure></p>
+<p>JavaScript 标准文档只给出了一种获取 [[Class]] 值的方法，那就是使用 Object.prototype.toString。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function is(type, obj) &#123;</span><br><span class="line">    var clas = Object.prototype.toString.call(obj).slice(8, -1);</span><br><span class="line">    return obj !== undefined &amp;&amp; obj !== null &amp;&amp; clas === type;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">is(&apos;String&apos;, &apos;test&apos;); // true</span><br><span class="line">is(&apos;String&apos;, new String(&apos;test&apos;)); // true</span><br><span class="line"></span><br><span class="line">Object.prototype.toString.call(undefined).slice(8, -1); //&apos;Undefined&apos;</span><br><span class="line">Object.prototype.toString.call(Null).slice(8, -1); //&apos;Null&apos;</span><br></pre></td></tr></table></figure></p>
+<p>Object.prototype.toString 返回一种标准格式字符串，所以上例可以通过 slice 截取指定位置的字符串，如下所示：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Object.prototype.toString.call([])    // &quot;[object Array]&quot;</span><br><span class="line">Object.prototype.toString.call(&#123;&#125;)    // &quot;[object Object]&quot;</span><br><span class="line">Object.prototype.toString.call(2)    // &quot;[object Number]&quot;</span><br></pre></td></tr></table></figure></p>
+<h3 id="测试为定义变量"><a href="#测试为定义变量" class="headerlink" title="测试为定义变量"></a>测试为定义变量</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">typeof foo !== &apos;undefined&apos;</span><br></pre></td></tr></table></figure>
+<p>上面代码会检测 foo 是否已经定义；如果没有定义而直接使用会导致 ReferenceError 的异常。 这是 typeof 唯一有用的地方,typeof有一种安全机制  </p>
+<p>为了检测一个对象的类型，强烈推荐使用 Object.prototype.toString 方法； 因为这是唯一一个可依赖的方式。正如上面表格所示，typeof 的一些返回值在标准文档中并未定义， 因此不同的引擎实现可能不同。</p>
+<p>除非为了检测一个变量是否已经定义，我们应尽量避免使用 typeof 操作符。</p>
+<h3 id="instanceOf"><a href="#instanceOf" class="headerlink" title="instanceOf"></a>instanceOf</h3><p>比较自定义对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function Foo() &#123;&#125;</span><br><span class="line">function Bar() &#123;&#125;</span><br><span class="line">Bar.prototype = new Foo();</span><br><span class="line"></span><br><span class="line">new Bar() instanceof Bar; // true</span><br><span class="line">new Bar() instanceof Foo; // true</span><br><span class="line"></span><br><span class="line">// 如果仅仅设置 Bar.prototype 为函数 Foo 本身，而不是 Foo 构造函数的一个实例</span><br><span class="line">Bar.prototype = Foo;</span><br><span class="line">new Bar() instanceof Foo; // false</span><br></pre></td></tr></table></figure></p>
+<p>instanceof 比较内置类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">new String(&apos;foo&apos;) instanceof String; // true</span><br><span class="line">new String(&apos;foo&apos;) instanceof Object; // true</span><br><span class="line"></span><br><span class="line">&apos;foo&apos; instanceof String; // false</span><br><span class="line">&apos;foo&apos; instanceof Object; // false</span><br></pre></td></tr></table></figure></p>
+<p>instanceof 用来比较属于不同JavaScript上下文的对象（比如，浏览器中不同的文档结构）时将会出错， 因为它们的构造函数不会是同一个对象。  </p>
+<p>有一点需要注意，instanceof 用来比较属于不同 JavaScript 上下文的对象（比如，浏览器中不同的文档结构，不用的iframe）时将会出错， 因为它们的构造函数不会是同一个对象。instanceof 操作符应该仅仅用来比较来自同一个 JavaScript 上下文的自定义对象。  </p>
+<h3 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h3><p>JavaScript 是弱类型语言，所以会在任何可能的情况下应用强制类型转换。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 下面的比较结果是：true</span><br><span class="line">new Number(10) == 10; // Number.valueOf() 返回的字符串被再次转换为数字</span><br><span class="line"></span><br><span class="line">10 == &apos;10&apos;;           // 字符串被转换为数字</span><br><span class="line">10 == &apos;+10 &apos;;         // 同上</span><br><span class="line">10 == &apos;010&apos;;          // 同上 </span><br><span class="line">isNaN(null) == false; // null 被转换为数字 0</span><br><span class="line">                      // 0 当然不是一个 NaN（译者注：否定之否定）</span><br><span class="line"></span><br><span class="line">// 下面的比较结果是：false</span><br><span class="line">10 == 010;</span><br><span class="line">10 == &apos;-10&apos;;</span><br><span class="line">ES5 提示: 以 0 开头的数字字面值会被作为八进制数字解析。 而在 ECMAScript 5 严格模式下，这个特性被移除了。</span><br></pre></td></tr></table></figure></p>
+<p>转换成字符串，将一个值加上空字符串可以轻松转换为字符串类型。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&apos;&apos; + 10 === &apos;10&apos;; // true</span><br></pre></td></tr></table></figure></p>
+<p>转换成数字，使用一元的加号操作符，可以把字符串转换为数字。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+&apos;10&apos; === 10; // true</span><br></pre></td></tr></table></figure></p>
+<p>字符串转数字的常用方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+&apos;010&apos; === 10</span><br><span class="line">Number(&apos;010&apos;) === 10</span><br><span class="line">parseInt(&apos;010&apos;, 10) === 10  // 用来转换为整数</span><br><span class="line"></span><br><span class="line">+&apos;010.2&apos; === 10.2</span><br><span class="line">Number(&apos;010.2&apos;) === 10.2</span><br><span class="line">parseInt(&apos;010.2&apos;, 10) === 10</span><br></pre></td></tr></table></figure></p>
+<p>转换成布尔型，通过使用 否 操作符两次，可以把一个值转换为布尔型。<br><figure class="highlight plain"><figcaption><span> </span><a href="//">true</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!!&apos;&apos;;      // false</span><br><span class="line">!!&apos;0&apos;;     // true</span><br><span class="line">!!&apos;1&apos;;     // true</span><br><span class="line">!!&apos;-1&apos;     // true</span><br><span class="line">!!&#123;&#125;;      // true</span><br><span class="line">!!true;    // true</span><br></pre></td></tr></table></figure></p>
+<h3 id="为什么不要使用eval"><a href="#为什么不要使用eval" class="headerlink" title="为什么不要使用eval"></a>为什么不要使用eval</h3><p>eval 函数会在当前作用域中执行一段 JavaScript 代码字符串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var foo = 1;</span><br><span class="line">function test() &#123;</span><br><span class="line">    var foo = 2;</span><br><span class="line">    eval(&apos;foo = 3&apos;);</span><br><span class="line">    return foo;</span><br><span class="line">&#125;</span><br><span class="line">test(); // 3</span><br><span class="line">foo; // 1</span><br></pre></td></tr></table></figure></p>
+<p>但是 eval 只在被直接调用并且调用函数就是 eval 本身时，才在当前作用域中执行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">var foo = 1;</span><br><span class="line">function test() &#123;</span><br><span class="line">    var foo = 2;</span><br><span class="line">    var bar = eval;</span><br><span class="line">    bar(&apos;foo = 3&apos;);</span><br><span class="line">    return foo;</span><br><span class="line">&#125;</span><br><span class="line">test(); // 2</span><br><span class="line">foo; // 3</span><br></pre></td></tr></table></figure></p>
+<p>上面的代码等价于在全局作用域中调用 eval，和下面两种写法效果一样：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">// 写法一：直接调用全局作用域下的 foo 变量</span><br><span class="line">var foo = 1;</span><br><span class="line">function test() &#123;</span><br><span class="line">    var foo = 2;</span><br><span class="line">    window.foo = 3;</span><br><span class="line">    return foo;</span><br><span class="line">&#125;</span><br><span class="line">test(); // 2</span><br><span class="line">foo; // 3</span><br><span class="line"></span><br><span class="line">// 写法二：使用 call 函数修改 eval 执行的上下文为全局作用域</span><br><span class="line">var foo = 1;</span><br><span class="line">function test() &#123;</span><br><span class="line">    var foo = 2;</span><br><span class="line">    eval.call(window, &apos;foo = 3&apos;);</span><br><span class="line">    return foo;</span><br><span class="line">&#125;</span><br><span class="line">test(); // 2</span><br><span class="line">foo; // 3</span><br></pre></td></tr></table></figure></p>
+<p>安全问题:eval 也存在安全问题，因为它会执行任意传给它的代码， 在代码字符串未知或者是来自一个不信任的源时，绝对不要使用 eval 函数。   </p>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>undefined 是一个值为 undefined 的类型。这个语言也定义了一个全局变量，它的值是 undefined，这个变量也被称为undefined。但是这个变量不是一个常量，也不是一个关键字。这意味着它的值可以轻易被覆盖。  </p>
+<p>由于全局变量 undefined 只是保存了 undefined 类型实际值的副本， 因此对它赋新值不会改变类型 undefined 的值。然而，为了方便其它变量和 undefined 做比较，我们需要事先获取类型 undefined 的值。  </p>
+<p>下面的情况会返回 undefined 值：  </p>
+<p>1.访问未修改的全局变量 undefined。<br>2.由于没有定义 return 表达式的函数隐式返回。<br>3.return 表达式没有显式的返回任何内容。<br>4.访问不存在的属性。<br>5.函数参数没有被显式的传递值。<br>6.任何被设置为 undefined 值的变量。  </p>
+<p>为了避免可能对 undefined 值的改变，一个常用的技巧是使用一个传递到匿名包装器的额外参数。 在调用时，这个参数不会获取任何值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var undefined = 123;</span><br><span class="line">(function(something, foo, undefined) &#123;</span><br><span class="line">    // 局部作用域里的 undefined 变量重新获得了 `undefined` 值</span><br><span class="line"></span><br><span class="line">&#125;)(&apos;Hello World&apos;, 42);</span><br></pre></td></tr></table></figure></p>
+<p>另外一种达到相同目的方法是在函数内使用变量声明。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var undefined = 123;</span><br><span class="line">(function(something, foo) &#123;</span><br><span class="line">    var undefined;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">&#125;)(&apos;Hello World&apos;, 42);</span><br></pre></td></tr></table></figure></p>
+<p>这里唯一的区别是，在压缩后并且函数内没有其它需要使用 var 声明变量的情况下，这个版本的代码会多出 4 个字节的代码。  </p>
+<h3 id="自动分号插入"><a href="#自动分号插入" class="headerlink" title="自动分号插入"></a>自动分号插入</h3><p>JavaScript 不是一个没有分号的语言，恰恰相反上它需要分号来就解析源代码。 因此 JavaScript 解析器在遇到由于缺少分号导致的解析错误时，会自动在源代码中插入分号。  </p>
+<p>自动插入分号的一个副作用就是js引擎不能正确处理return表达式紧跟换行符的情况。  </p>
+<h3 id="setTimeout和setInterval"><a href="#setTimeout和setInterval" class="headerlink" title="setTimeout和setInterval"></a>setTimeout和setInterval</h3><p>setTimeout:<br>基于 JavaScript引擎的计时策略，以及本质上的单线程运行方式，所以其它代码的运行可能会阻塞此线程。 因此没法确保函数会在 setTimeout 指定的时刻被调用。  </p>
+<p>setInterval的堆调用:<br>当回调函数的执行被阻塞时，setInterval 仍然会发布更多的回调指令。在很小的定时间隔情况下，这会导致回调函数被堆积起来。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    // 阻塞执行 1 秒</span><br><span class="line">&#125;</span><br><span class="line">setInterval(foo, 100);</span><br></pre></td></tr></table></figure></p>
+<p>在 foo 被阻塞的时候，setInterval 仍然在组织将来对回调函数的调用。 因此，当第一次 foo 函数调用结束时，已经有 10 次函数调用在等待执行。  </p>
+<p>处理可能的阻塞调用:<br>最简单也是最容易控制的方案，是在回调函数内部使用 setTimeout 函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function foo()&#123;</span><br><span class="line">    // 阻塞执行 1 秒</span><br><span class="line">    setTimeout(foo, 100);</span><br><span class="line">&#125;</span><br><span class="line">foo();</span><br></pre></td></tr></table></figure></p>
+<p>这样不仅封装了 setTimeout 回调函数，而且阻止了调用指令的堆积，可以有更多的控制。 foo 函数现在可以控制是否继续执行还是终止执行。  </p>
+<h3 id="隐藏使用eval"><a href="#隐藏使用eval" class="headerlink" title="隐藏使用eval"></a>隐藏使用eval</h3><p>setTimeout 和 setInterval 也接受第一个参数为字符串的情况。 这个特性绝对不要使用，因为它在内部使用了 eval。  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">function foo() &#123;</span><br><span class="line">    // 将会被调用</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function bar() &#123;</span><br><span class="line">    function foo() &#123;</span><br><span class="line">        // 不会被调用</span><br><span class="line">    &#125;</span><br><span class="line">    setTimeout(&apos;foo()&apos;, 1000);</span><br><span class="line">&#125;</span><br><span class="line">bar();</span><br></pre></td></tr></table></figure>
+<p>由于 eval 在这种情况下不是被直接调用，因此传递到 setTimeout 的字符串会自全局作用域中执行； 因此，上面的回调函数使用的不是定义在 bar 作用域中的局部变量 foo。    </p>
+<p>绝对不要使用字符串作为 setTimeout 或者 setInterval 的第一个参数， 这么写的代码明显质量很差。当需要向回调函数传递参数时，可以创建一个匿名函数，在函数内执行真实的回调函数。另外，应该避免使用 setInterval，因为它的定时执行不会被 JavaScript 阻塞。 </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/javascript秘密花园/" rel="tag">#javascript秘密花园</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2017/02/21/javascript性能优化/" rel="next" title="javascript性能优化">
+                <i class="fa fa-chevron-left"></i> javascript性能优化
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/02/27/http缓存控制-1/" rel="prev" title="http缓存控制(1)">
+                http缓存控制(1) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/02/25/js秘密花园/"
+           data-title="javascript秘密花园" data-url="http://blog.liuyanhao.cn/blog/2017/02/25/js秘密花园/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/uploads/author.jpg"
+               alt="刘雁豪" />
+          <p class="site-author-name" itemprop="name">刘雁豪</p>
+          <p class="site-description motion-element" itemprop="description">人生一梦，白云苍狗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GitLLY" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/liuyanhao/" target="_blank" title="博客园">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  博客园
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.bilibili.com/" title="bilibili" target="_blank">bilibili</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#对象使用和属性"><span class="nav-number">1.</span> <span class="nav-text">对象使用和属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对象作为数据类型"><span class="nav-number">2.</span> <span class="nav-text">对象作为数据类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原型"><span class="nav-number">3.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#hasOwnProperty函数"><span class="nav-number">4.</span> <span class="nav-text">hasOwnProperty函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in"><span class="nav-number">5.</span> <span class="nav-text">for in</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数"><span class="nav-number">6.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#this的工作原理"><span class="nav-number">7.</span> <span class="nav-text">this的工作原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#闭包和引用"><span class="nav-number">8.</span> <span class="nav-text">闭包和引用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环中的闭包"><span class="nav-number">9.</span> <span class="nav-text">循环中的闭包</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#arguments对象"><span class="nav-number">10.</span> <span class="nav-text">arguments对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#构造函数"><span class="nav-number">11.</span> <span class="nav-text">构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工厂模式"><span class="nav-number">12.</span> <span class="nav-text">工厂模式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域与命名空间"><span class="nav-number">13.</span> <span class="nav-text">作用域与命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部变量"><span class="nav-number">14.</span> <span class="nav-text">局部变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#变量声明提升-hoisting"><span class="nav-number">15.</span> <span class="nav-text">变量声明提升(hoisting)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#名称解析顺序"><span class="nav-number">16.</span> <span class="nav-text">名称解析顺序</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名空间"><span class="nav-number">17.</span> <span class="nav-text">命名空间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数组遍历与属性"><span class="nav-number">18.</span> <span class="nav-text">数组遍历与属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Array构造函数"><span class="nav-number">19.</span> <span class="nav-text">Array构造函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#等于操作符"><span class="nav-number">20.</span> <span class="nav-text">等于操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#严格等于操作符"><span class="nav-number">21.</span> <span class="nav-text">严格等于操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#比较对象"><span class="nav-number">22.</span> <span class="nav-text">比较对象</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#typeof操作符"><span class="nav-number">23.</span> <span class="nav-text">typeof操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试为定义变量"><span class="nav-number">24.</span> <span class="nav-text">测试为定义变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#instanceOf"><span class="nav-number">25.</span> <span class="nav-text">instanceOf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#类型转换"><span class="nav-number">26.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么不要使用eval"><span class="nav-number">27.</span> <span class="nav-text">为什么不要使用eval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">28.</span> <span class="nav-text">undefined</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自动分号插入"><span class="nav-number">29.</span> <span class="nav-text">自动分号插入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setTimeout和setInterval"><span class="nav-number">30.</span> <span class="nav-text">setTimeout和setInterval</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#隐藏使用eval"><span class="nav-number">31.</span> <span class="nav-text">隐藏使用eval</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘雁豪</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+ <span id="busuanzi_container_site_pv" style="marin-left:10px">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuyanhao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/blog/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/blog/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+</body>
+</html>

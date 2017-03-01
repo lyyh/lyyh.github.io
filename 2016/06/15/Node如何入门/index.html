@@ -1,0 +1,836 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/blog/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/blog/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/blog/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Node," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/blog/images/qqf.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="学了3个星期的Node，虽说能一些简单的程序，但是对Node的核心思想(事件驱动，非阻塞IO模型，异步编程)还有些模糊，在此总结一下。希望对大家有所帮助。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Node入门阶段总结">
+<meta property="og:url" content="http://blog.liuyanhao.cn/2016/06/15/Node如何入门/index.html">
+<meta property="og:site_name" content="多情剑客无情剑">
+<meta property="og:description" content="学了3个星期的Node，虽说能一些简单的程序，但是对Node的核心思想(事件驱动，非阻塞IO模型，异步编程)还有些模糊，在此总结一下。希望对大家有所帮助。">
+<meta property="og:updated_time" content="2016-06-15T06:08:12.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Node入门阶段总结">
+<meta name="twitter:description" content="学了3个星期的Node，虽说能一些简单的程序，但是对Node的核心思想(事件驱动，非阻塞IO模型，异步编程)还有些模糊，在此总结一下。希望对大家有所帮助。">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6294502511155873000,
+      author: '青锋'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://blog.liuyanhao.cn/2016/06/15/Node如何入门/"/>
+
+  <title> Node入门阶段总结 | 多情剑客无情剑 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?fd4bd4ac402cb334203e010077c9e4c8";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/blog/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">多情剑客无情剑</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">心中曾住着一位游侠</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/blog/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/blog/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/blog/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/blog/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-qfz">
+          <a href="/blog/qfz" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-fire"></i> <br />
+            
+            青锋志
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/blog/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/blog/404.html" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Node入门阶段总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-15T00:00:00+08:00" content="2016-06-15">
+              2016-06-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/blog/categories/Node/" itemprop="url" rel="index">
+                    <span itemprop="name">Node</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/blog/2016/06/15/Node如何入门/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/15/Node如何入门/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>学了3个星期的Node，虽说能一些简单的程序，但是对Node的核心思想(事件驱动，非阻塞IO模型，异步编程)还有些模糊，在此总结一下。希望对大家有所帮助。<br><a id="more"></a></p>
+<h2 id="最近学了一下NodeJS-把其中的收获分享给大家"><a href="#最近学了一下NodeJS-把其中的收获分享给大家" class="headerlink" title="最近学了一下NodeJS,把其中的收获分享给大家"></a>最近学了一下NodeJS,把其中的收获分享给大家</h2><p>安装及教程请狠狠地戳这里<a href="http://www.runoob.com/nodejs/nodejs-tutorial.html" target="_blank" rel="external">nodejs菜鸟教程</a>和<a href="http://nodeapi.ucdok.com/#/api/" target="_blank" rel="external">Node.js API中文版</a>，入门请狠狠地戳这里<a href="http://www.nodebeginner.org/index-zh-cn.html" target="_blank" rel="external">node入门</a>，请把<a href="http://cnodejs.org/" target="_blank" rel="external">CNode</a>好好的收藏起来，书籍推荐<font color="red">深入浅出nodejs</font>（别急,先把node入门给看了）。框架推荐<a href="http://expressjs.jser.us/api.html" target="_blank" rel="external">express API</a>和<a href="http://javascript.ruanyifeng.com/nodejs/express.html" target="_blank" rel="external">express 框架</a>（别急，先把node入门看了）。学习步骤<a href="https://cnodejs.org/topic/535376501969a7b22aca6d24" target="_blank" rel="external">nodejs的6个步骤</a></p>
+<hr>
+<h2 id="NodeJS思想"><a href="#NodeJS思想" class="headerlink" title="NodeJS思想"></a>NodeJS思想</h2><hr>
+<blockquote>
+<ol>
+<li>它是一个Javascript运行环境</li>
+<li>依赖于Chrome V8引擎进行代码解释</li>
+<li>事件驱动（戳这里<a href="http://www.cnblogs.com/lua5/archive/2011/02/01/1948760.html" target="_blank" rel="external">理解Node.js事件驱动编程</a>）</li>
+<li>非阻塞I/O（戳这里<a href="http://cnodejs.org/topic/4f50dd9798766f5a610b808a" target="_blank" rel="external">理解Node.js的异步非阻塞I/O模型</a>）</li>
+<li>轻量、可伸缩，适于实时数据交互应用</li>
+<li>单进程，单线程</li>
+</ol>
+</blockquote>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><ol>
+<li>高并发（最重要的优点）</li>
+<li><p>采用事件驱动、异步编程，为网络服务而设计</p>
+<p>在学习nodejs过程中，你会用到大量js的匿名函数和闭包特性，并且到处都是callback。</p>
+</li>
+<li>Node.js非阻塞模式的IO处理给Node.js带来在相对低系统资源耗用下的高性能与出众的负载能力，非常适合用作依赖其它IO资源的中间层服务。<h3 id="劣势"><a href="#劣势" class="headerlink" title="劣势"></a>劣势</h3></li>
+<li>可靠性低</li>
+<li>单进程，单线程，只支持单核CPU，不能充分的利用多核CPU服务器。一旦这个进程崩掉，那么整个web服务就崩掉了。</li>
+</ol>
+<p><code>解决方案：
+（1）Nnigx反向代理，负载均衡，开多个进程，绑定多个端口；</code> </p>
+<p><code>(2)想达到多核或者多进程也不是很难（现在已经有大量的第三方module来实现这个功     能）</code></p>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><h4 id="适合"><a href="#适合" class="headerlink" title="适合"></a>适合</h4><ol>
+<li>单页面、多Ajax请求应用——如Gmail，前端有大量的异步请求，需要服务后端有极高的响应速度</li>
+<li><p>RESTful API（想要理解restful架构请狠狠地戳这里<a href="http://www.ruanyifeng.com/blog/2011/09/restful" target="_blank" rel="external">理解RESTful架构</a>）</p>
+<p>这是NodeJS最理想的应用场景，可以处理数万条连接，本身没有太多的逻辑，只需要请求API，组织数据进行返回即可。<code>它本质上只是从某个数据库中查找一些值并将它们组成一个响应。</code>由于响应是少量文本，入站请求也是少量的文本，因此流量不高，一台机器甚至也可以处理最繁忙的公司的API需求。</p>
+</li>
+<li><p>统一Web应用的UI</p>
+<p>目前MVC的架构，在某种意义上来说，Web开发有两个UI层，一个是在浏览器里面我们最终看到的，另一个在server端，负责生成和拼接页面。</p>
+<p>不讨论这种架构是好是坏，但是有另外一种实践，面向服务的架构，更好的做前后端的依赖分离。如果所有的关键业务逻辑都封装成REST调用，就意味着在上层只需要考虑如何用这些REST接口构建具体的应用。那些后端程序员们根本不操心具体数据是如何从一个页面传递到另一个页面的，他们也不用管用户数据更新是通过Ajax异步获取的还是通过刷新页面。</p>
+</li>
+</ol>
+<h4 id="不适合"><a href="#不适合" class="headerlink" title="不适合"></a>不适合</h4><ol>
+<li>CPU密集型应用<br>CPU密集型应用给Node带来的挑战主要是：由于JavaScript单线程的原因，如果有长时间运行的计算（比如大循环），将会导致CPU时间片不能释放，使得后续I/O无法发起；</li>
+</ol>
+<p><code>解决方案：分解大型运算任务为多个小任务，使得运算能够适时释放，不阻塞I/O调用的发起</code></p>
+<ol>
+<li>简单Web应用——此类应用的特点是，流量低、物理架构简单，Node.js无法提供像Ruby的Rails或者Python的Django这样强大的框架</li>
+</ol>
+<p>简而言之，NodeJS适合运用在高并发、I/O密集、少量业务逻辑的场景。</p>
+<h3 id="做为NodeJS最显著特性（高并发），它是怎么做到的呢？？"><a href="#做为NodeJS最显著特性（高并发），它是怎么做到的呢？？" class="headerlink" title="做为NodeJS最显著特性（高并发），它是怎么做到的呢？？"></a>做为NodeJS最显著特性（高并发），它是怎么做到的呢？？</h3><p>一句话：异步、事件驱动模型</p>
+<p>举个例子，想象一个场景，我们在银行排队办理业务，我们看看下面两个模型。</p>
+<h4 id="系统线程模型"><a href="#系统线程模型" class="headerlink" title="系统线程模型"></a>系统线程模型</h4><p>银行只有一个业务员（一个线程），并发请求（客户）到达只能处理一个，其余的要先排队，这就是阻塞，正在享受服务的请求阻塞后面的请求了。</p>
+<h4 id="多线程、线程池模型："><a href="#多线程、线程池模型：" class="headerlink" title="多线程、线程池模型："></a>多线程、线程池模型：</h4><p>这个模型已经比上一个有所进步，它调节服务端线程的数量来提高对并发请求的接收和响应。银行有多个业务员（多个线程），然而并发量高（客户多）的时候<br>，请求仍需等待。</p>
+<p>但是也会产生问题：服务端与客户端每建立一个连接，都要为这个连接分配一套配套的资源，这就是为什么一般并发量一大，就需要多开服务器。</p>
+<h4 id="异步、事件驱动模型"><a href="#异步、事件驱动模型" class="headerlink" title="异步、事件驱动模型"></a>异步、事件驱动模型</h4><p>想象一下，我们去餐馆点餐。</p>
+<p>进入餐馆，一个服务员前来招待（单线程），我们点完餐（发起一次请求）开始等待，因为服务员人手不足，她又去招待其他客户（没有阻塞下一个用户的订单请求）。服务员告诉厨师做什么菜（将事件放入队列中执行）。等饭菜做好了，服务员喊号，我们拿到了自己的饭菜，进行后续的处理（吃饭）。</p>
+<font color="red">这个喊号码的动作在NodeJS中叫做回调（Callback），能在事件（烧菜，I/O）处理完成后继续执行后面的逻辑（吃饭），这体现了NodeJS的显著特点，异步机制、事件驱动整个过程没有阻塞新用户的连接（点餐），也不需要维护已经点餐的用户与厨师的连接。</font>
+
+<h4 id="说了这么多，给一个完整的流程"><a href="#说了这么多，给一个完整的流程" class="headerlink" title="说了这么多，给一个完整的流程"></a>说了这么多，给一个完整的流程</h4><ol>
+<li>你用浏览器访问nodejs服务器上的”/about.html”</li>
+<li>nodejs服务器接收到你的请求，调用一个函数从磁盘上读取这个文件。</li>
+<li>这段时间，nodejs webserver在服务后续的web请求。</li>
+<li>当文件读取完毕，有一个回调函数被插入到nodejs的服务队列中。</li>
+<li>nodejs webserver运行这个函数，实际上就是渲染（render）了about.html页面返回给你的浏览器。</li>
+</ol>
+<p>参考文献：<br><a href="http://blog.csdn.net/xiaemperor/article/details/38234979" target="_blank" rel="external">NodeJS优缺点及适用场景讨论</a><br><a href="http://www.cnblogs.com/lua5/archive/2011/02/01/1948760.html" target="_blank" rel="external">理解NodeJS事件驱动编程</a></p>
+<hr>
+<h2 id="NodeJS异步"><a href="#NodeJS异步" class="headerlink" title="NodeJS异步"></a>NodeJS异步</h2><hr>
+<blockquote>
+<p>异步编程是指由于异步I/O等因素，无法同步获得执行结果时，<br>在回调函数中进行下一步操作的代码编写风格,常见的如setTimeout函数、ajax请求等等。</p>
+</blockquote>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for (var i = 1; i &lt;= 3; i++) &#123;</span><br><span class="line">		setTimeout(function()&#123;</span><br><span class="line">			console.log(i);</span><br><span class="line">		&#125;, 0);</span><br><span class="line">	&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里大部分人会认为输出123，或者333。其实它会输出 444</p>
+<p>这里就是我们要说的异步编程了。</p>
+<h4 id="高级函数的定义"><a href="#高级函数的定义" class="headerlink" title="高级函数的定义"></a>高级函数的定义</h4><p>这里为什么会说到高级函数，因为高级函数是异步编程的基础。</p>
+<p>那什么是高级函数呢？<br>其实高级函数就是把函数作为参数或者是作为返回值。</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function test(v)&#123;</span><br><span class="line">	  return function()&#123;</span><br><span class="line">		return v;</span><br><span class="line">	  &#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如上就是把一个函数作为一个返回值。</p>
+<h3 id="异步编程优势"><a href="#异步编程优势" class="headerlink" title="异步编程优势"></a>异步编程优势</h3><p>基于事件驱动的非阻塞I/O模型</p>
+<h3 id="异步编程难点"><a href="#异步编程难点" class="headerlink" title="异步编程难点"></a>异步编程难点</h3><ol>
+<li>异常处理 ，通常try/catch不一定适用，因为callback并不是在当前Tick中执行。Node在异常处理中约定将异常作为回调函数的第一个实参传回。</li>
+<li>函数嵌套过深</li>
+<li>代码阻塞 ：没有sleep函数，通过setInterval()和setTimeout()模拟</li>
+<li>多线程编程</li>
+<li>异步转同步</li>
+</ol>
+<h3 id="我要获取回调函数中的返回值！"><a href="#我要获取回调函数中的返回值！" class="headerlink" title="我要获取回调函数中的返回值！"></a>我要获取回调函数中的返回值！</h3><p>一开始我想到的是return</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function work()&#123;</span><br><span class="line">var val;</span><br><span class="line">var timer = setTimeout(function()&#123;</span><br><span class="line">	val = 10;</span><br><span class="line">&#125;,1000)</span><br><span class="line">return val;</span><br><span class="line">&#125;</span><br><span class="line">var result = work();</span><br><span class="line">alert(result)</span><br></pre></td></tr></table></figure>
+<p>结果是<code>undefined</code>  而不是<code>10</code>  </p>
+<p>因为是先执行的return才执行的回调函数。</p>
+<h4 id="怎么解决呢？"><a href="#怎么解决呢？" class="headerlink" title="怎么解决呢？"></a>怎么解决呢？</h4><p>改变思维模式。将函数work也改成回调式的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function work(callback)&#123;</span><br><span class="line">	var val;</span><br><span class="line">	var timer = setTimeout(function()&#123;</span><br><span class="line">		val = 10;</span><br><span class="line">		callback(10)</span><br><span class="line">	&#125;,1000)</span><br><span class="line">&#125;</span><br><span class="line">work(function(result)&#123;</span><br><span class="line">	alert(result)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>结果是<code>10</code></p>
+<p>参考文献：<br><a href="https://cnodejs.org/topic/533d6edbc2621e680800e0ea" target="_blank" rel="external">深入理解node.js异步编程：基础篇</a><br><a href="https://cnodejs.org/topic/54acfbb5ce87bace2444cbfb" target="_blank" rel="external">nodejs之async异步编程</a></p>
+<hr>
+<h2 id="模块化编程"><a href="#模块化编程" class="headerlink" title="模块化编程"></a>模块化编程</h2><hr>
+<h3 id="exports、require、module-exports"><a href="#exports、require、module-exports" class="headerlink" title="exports、require、module.exports"></a>exports、require、module.exports</h3><blockquote>
+<p>NodeJS遵循CommonJS规范，也就有了模块化(module)编程的思想。模块是NodeJS基本的组成部分。一个node.js文件就相当于一个模块。</p>
+<p>Node.js提供了exports和require两个对象,其中exports是模块公开的接口,用于导出当前模块的变量和方法。require用于从外部获取一个模块接口,即所获取模块的exports对象.</p>
+</blockquote>
+<p>app.js</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.say = function()&#123;</span><br><span class="line">	console.log(&apos;I am a function&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>index.js（与app.js同目录下）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var app = require(&apos;./app&apos;);</span><br><span class="line"> app.say();</span><br></pre></td></tr></table></figure>
+<p>结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I am a function</span><br></pre></td></tr></table></figure></p>
+<h3 id="exports还是module-exports"><a href="#exports还是module-exports" class="headerlink" title="exports还是module.exports"></a>exports还是module.exports</h3><blockquote>
+<p>module.exports是真实存在的东西。exports只是module.exports的辅助方法。</p>
+<h4 id="例一："><a href="#例一：" class="headerlink" title="例一："></a>例一：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exports.say = function()&#123;</span><br><span class="line">	console.log(&apos;I am a exports function&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports.say = function()&#123;</span><br><span class="line">	console.log(&apos;I am a module.exports function&apos;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var app = require(&apos;./app&apos;);</span><br><span class="line">app.say();</span><br></pre></td></tr></table></figure>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">I am a module.exports function</span><br></pre></td></tr></table></figure>
+<p>这是什么原因？看了下面的代码就清楚了</p>
+<h4 id="例二："><a href="#例二：" class="headerlink" title="例二："></a>例二：</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">console.log(this);</span><br><span class="line">console.log(exports);</span><br><span class="line">console.log(module.exports);</span><br><span class="line">console.log(this === exports);</span><br><span class="line">console.log(this === module.exports);</span><br><span class="line">console.log(exports === module.exports);</span><br></pre></td></tr></table></figure>
+<p>结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#125;</span><br><span class="line">&#123;&#125;</span><br><span class="line">&#123;&#125;</span><br><span class="line">true</span><br><span class="line">true</span><br></pre></td></tr></table></figure></p>
+<p>exports默认和module.exports指向同一个空对象。</p>
+<p>所以结合两个例子可知：</p>
+<ol>
+<li><p>module.exports才是真正的接口，exports只不过是它的一个辅助工具。</p>
+</li>
+<li><p>如果运行时让exports、this和module.exports指向不同的对象，只有module.exports指向的对象才会被导出。</p>
+</li>
+<li><p>最终返回给调用的是module.exports而不是exports。 <code>所有的exports收集到的属性和方法，都赋值给了module.exports。当然，这有个前提，就是module.exports本身不具备任何属性和方法。</code>如果，module.exports已经具备一些属性和方法，那么exports收集来的信息将被忽略。</p>
+</li>
+</ol>
+<blockquote>
+<p> 如果你想要你的模块成为一个特别的对象类型，那么使用module.exports；如果你希望你的模块成为一个传统的模块实例（module instance），使用exports。</p>
+</blockquote>
+<h4 id="把属性赋予module-exports的结果与把属性赋予给exports是一样的。"><a href="#把属性赋予module-exports的结果与把属性赋予给exports是一样的。" class="headerlink" title="把属性赋予module.exports的结果与把属性赋予给exports是一样的。"></a>把属性赋予module.exports的<code>结果</code>与把属性赋予给exports是一样的。</h4><p>如下两个实例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">module.exports.name = function() &#123;</span><br><span class="line">    console.log(&apos;My name is shumei&apos;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">exports.name = function() &#123;</span><br><span class="line">    console.log(&apos;My name is shumei&apos;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/blog/tags/Node/" rel="tag">#Node</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/blog/2016/06/13/css外边距重叠/" rel="next" title="css外边距重叠">
+                <i class="fa fa-chevron-left"></i> css外边距重叠
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/blog/2017/01/30/浅谈node搭建高度可升缩web应用/" rel="prev" title="浅谈node搭建高度可升缩web应用">
+                浅谈node搭建高度可升缩web应用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/06/15/Node如何入门/"
+           data-title="Node入门阶段总结" data-url="http://blog.liuyanhao.cn/blog/2016/06/15/Node如何入门/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/blog/uploads/author.jpg"
+               alt="刘雁豪" />
+          <p class="site-author-name" itemprop="name">刘雁豪</p>
+          <p class="site-description motion-element" itemprop="description">人生一梦，白云苍狗</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/blog/archives">
+              <span class="site-state-item-count">14</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/blog/categories">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/blog/tags">
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/GitLLY" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.cnblogs.com/liuyanhao/" target="_blank" title="博客园">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  博客园
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.bilibili.com/" title="bilibili" target="_blank">bilibili</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#最近学了一下NodeJS-把其中的收获分享给大家"><span class="nav-number">1.</span> <span class="nav-text">最近学了一下NodeJS,把其中的收获分享给大家</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJS思想"><span class="nav-number">2.</span> <span class="nav-text">NodeJS思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#优势"><span class="nav-number">2.1.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#劣势"><span class="nav-number">2.2.</span> <span class="nav-text">劣势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用场景"><span class="nav-number">2.3.</span> <span class="nav-text">应用场景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#适合"><span class="nav-number">2.3.1.</span> <span class="nav-text">适合</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不适合"><span class="nav-number">2.3.2.</span> <span class="nav-text">不适合</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做为NodeJS最显著特性（高并发），它是怎么做到的呢？？"><span class="nav-number">2.4.</span> <span class="nav-text">做为NodeJS最显著特性（高并发），它是怎么做到的呢？？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统线程模型"><span class="nav-number">2.4.1.</span> <span class="nav-text">系统线程模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多线程、线程池模型："><span class="nav-number">2.4.2.</span> <span class="nav-text">多线程、线程池模型：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步、事件驱动模型"><span class="nav-number">2.4.3.</span> <span class="nav-text">异步、事件驱动模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#说了这么多，给一个完整的流程"><span class="nav-number">2.4.4.</span> <span class="nav-text">说了这么多，给一个完整的流程</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NodeJS异步"><span class="nav-number">3.</span> <span class="nav-text">NodeJS异步</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#高级函数的定义"><span class="nav-number">3.0.1.</span> <span class="nav-text">高级函数的定义</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步编程优势"><span class="nav-number">3.1.</span> <span class="nav-text">异步编程优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#异步编程难点"><span class="nav-number">3.2.</span> <span class="nav-text">异步编程难点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#我要获取回调函数中的返回值！"><span class="nav-number">3.3.</span> <span class="nav-text">我要获取回调函数中的返回值！</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#怎么解决呢？"><span class="nav-number">3.3.1.</span> <span class="nav-text">怎么解决呢？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模块化编程"><span class="nav-number">4.</span> <span class="nav-text">模块化编程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exports、require、module-exports"><span class="nav-number">4.1.</span> <span class="nav-text">exports、require、module.exports</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#exports还是module-exports"><span class="nav-number">4.2.</span> <span class="nav-text">exports还是module.exports</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#例一："><span class="nav-number">4.2.1.</span> <span class="nav-text">例一：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#例二："><span class="nav-number">4.2.2.</span> <span class="nav-text">例二：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#把属性赋予module-exports的结果与把属性赋予给exports是一样的。"><span class="nav-number">4.2.3.</span> <span class="nav-text">把属性赋予module.exports的结果与把属性赋予给exports是一样的。</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy;  2016 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">刘雁豪</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+ <span id="busuanzi_container_site_pv" style="marin-left:10px">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+</span>
+</span>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/blog/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/blog/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/blog/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/blog/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/blog/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"liuyanhao"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/blog/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/blog/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+
+</body>
+</html>
